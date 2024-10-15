@@ -1,0 +1,97 @@
+##
+## Copyright (c) 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+##
+## NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+## property and proprietary rights in and to this material, related
+## documentation and any modifications thereto. Any use, reproduction,
+## disclosure or distribution of this material and related documentation
+## without an express license agreement from NVIDIA CORPORATION or
+## its affiliates is strictly prohibited.
+##
+robot_cfg:
+  kinematics:
+    usd_path: "robot/iiwa14_description/iiwa14_without_gripper.usd"
+    usd_robot_root: "/robot"
+    isaac_usd_path: ""
+    usd_flip_joints: {}
+    usd_flip_joint_limits: []
+
+
+    base_link: world
+    collision_link_names:
+      - link_0
+      - link_1
+      - link_2
+      - link_3
+      - link_4
+      - link_5
+      - link_6
+      - link_7
+    collision_sphere_buffer: 0.005
+    collision_spheres: spheres/iiwa14_without_gripper.yml
+    ee_link: link_ee
+    self_collision_buffer:
+      link_0: -0.02
+      link_1: 0.0
+      link_2: 0.0
+      link_3: 0.0
+      link_4: 0.0
+      link_5: 0.0
+      link_6: 0.0
+      link_7: 0.0
+
+    self_collision_ignore:
+      {
+        link_0: [link_1, link_2, link_3],
+        link_1: [link_2, link_3],
+        link_2: [link_3, link_4],
+        link_3: [link_4, link_5],
+        link_4: [link_5, link_6],
+        link_5: [link_6, link_7],
+        link_6: [link_7],
+
+      }
+    urdf_path: robot/iiwa14_description/iiwa14.urdf
+    asset_root_path: robot/iiwa14_description
+    mesh_link_names:
+      - link_0
+      - link_1
+      - link_2
+      - link_3
+      - link_4
+      - link_5
+      - link_6
+      - link_7
+    cspace:
+      joint_names:
+        [
+          "A1", "A2", "A3", "A4", "A5", "A6", "A7",
+        ]
+      cspace_distance_weight:
+        - 1.0
+        - 0.9
+        - 0.8
+        - 0.8
+        - 0.7
+        - 0.6
+        - 0.5
+
+      null_space_weight:
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+
+      retract_config:
+        - 0.0
+        - -0.78
+        - 0.0
+        - -1.4
+        - 0.0
+        - 0.6
+        - 0.0
+      max_acceleration: 15.0
+      max_jerk: 500.0

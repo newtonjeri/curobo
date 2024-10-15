@@ -1,0 +1,117 @@
+##
+## Copyright (c) 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+##
+## NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+## property and proprietary rights in and to this material, related
+## documentation and any modifications thereto. Any use, reproduction,
+## disclosure or distribution of this material and related documentation
+## without an express license agreement from NVIDIA CORPORATION or
+## its affiliates is strictly prohibited.
+##
+
+robot_cfg:
+  kinematics:
+    usd_path: "robot/xarm_description/xarm7.usd"
+    usd_robot_root: "/robot"
+    isaac_usd_path: ""
+    usd_flip_joints: {}
+    usd_flip_joint_limits: []
+
+
+    urdf_path: robot/xarm_description/xarm7.urdf
+    asset_root_path: robot/xarm_descritpion
+    
+    base_link: world
+    ee_link: link_eef
+    link_names:
+      - link_base
+      - link1
+      - link2
+      - link3
+      - link4
+      - link5
+      - link6
+      - link7
+      - link_eef
+    lock_joints: null
+    extra_links: null
+    collision_link_names:
+      - link_base
+      - link1
+      - link2
+      - link3
+      - link4
+      - link5
+      - link6
+      - link7
+    collision_spheres: spheres/xarm7.yaml
+    collision_sphere_buffer: 0.005 # float or Dict[str, float]
+    # extra_collision_spheres: {}
+    self_collision_ignore: {
+      link_base: [link1, link2, link3],
+      link1: [link2, link3, link4],
+      link2: [link3, link4, link5],
+      link3: [link4, link5, link6],
+      link4: [link5, link6, link7],
+      link5: [link6, link7],
+      link6: [link7],
+    } # Dict[str, List[str]]
+
+    self_collision_buffer: {
+      link_base: 0.1,
+      link1: 0.1,
+      link2: 0.1,
+      link3: 0.1,
+      link4: 0.1,
+      link5: 0.1,
+      link6: 0.1,
+      link7: 0.1,
+    } # Dict[str, float]
+
+    use_global_cumul: True
+    mesh_link_names: # List[str]
+      - link_base
+      - link1
+      - link2
+      - link3
+      - link4
+      - link5
+      - link6
+      - link7
+    cspace:
+      joint_names: 
+        [
+          "joint1",
+          "joint2",
+          "joint3",
+          "joint4",
+          "joint5",
+          "joint6",
+          "joint7",
+        ] # List[str]
+      retract_config: # List[float]
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+      null_space_weight: # List[str]
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+      cspace_distance_weight: # List[str]
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+      max_jerk: 500.0
+      max_acceleration: 15.0
